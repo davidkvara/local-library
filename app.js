@@ -5,14 +5,13 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
-var aboutRouter = require("./routes/about");
-var linksRouter = require("./routes/links");
+var catalog = require("./routes/catalog");
 
 var app = express();
 
 //Set up mongoose connection
 var mongoose = require("mongoose");
-var mongoDB = "insert_your_database_url_here_ar_vakomiteb";
+var mongoDB = "not_to_be_seen";
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
@@ -29,8 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/about", aboutRouter);
-app.use("/links", linksRouter);
+app.use("/catalog", catalog);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
