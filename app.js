@@ -10,6 +10,14 @@ var linksRouter = require("./routes/links");
 
 var app = express();
 
+//Set up mongoose connection
+var mongoose = require("mongoose");
+var mongoDB = "insert_your_database_url_here_ar_vakomiteb";
+mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
