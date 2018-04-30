@@ -44,7 +44,8 @@ exports.book_list = function(req, res, next) {
         return next(err);
       }
       //Successful, so render
-      res.render("book_list", { title: "Book List", book_list: list_books });
+      // res.render("book_list", { title: "Book List", book_list: list_books });
+      res.json(list_books);
     });
 };
 

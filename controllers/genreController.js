@@ -11,10 +11,11 @@ exports.genre_list = function(req, res, next) {
         return next(err);
       }
       // Successful, so render.
-      res.render("genre_list", {
-        title: "Genre List",
-        list_genres: list_genres
-      });
+      // res.render("genre_list", {
+      //   title: "Genre List",
+      //   list_genres: list_genres
+      // });
+      res.json(list_genres);
     });
 };
 

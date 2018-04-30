@@ -12,10 +12,11 @@ exports.author_list = function(req, res, next) {
         return next(err);
       }
       //Successful, so render
-      res.render("author_list", {
+      /* res.render("author_list", {
         title: "Author List",
         author_list: list_authors
-      });
+      }); */
+      res.json(list_authors);
     });
 };
 
