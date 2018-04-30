@@ -31,6 +31,10 @@ body {
   font-size: large;
 }
 
+.lighter {
+  opacity: 0.7;
+}
+
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -103,9 +107,8 @@ body {
     "Lucida Sans", Arial, sans-serif;
   letter-spacing: 1px;
   display: inline-block;
-  border-left: 4px solid #292929;
+  border-left: 4px solid #313131;
   padding: 0.2rem 1.2rem;
-  /* background: linear-gradient(to right, #d5eeff, #fff); */
   margin-top: 0;
   margin-bottom: 0.6rem;
 }

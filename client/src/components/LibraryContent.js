@@ -4,9 +4,11 @@ import ListItem from "./ListItem";
 const LibraryContent = ({ data }) => {
   return (
     <div>
-      <p className="large">The library has the following record counts:</p>
+      <p className="large lighter">
+        The library has the following record counts:
+      </p>
       {data.map((library, i) => (
-        <div key={i}>
+        <div key={i} style={{ margin: "30px 20px" }}>
           <ListItem label="Books" text={library.book_count} />
           <ListItem label="Copies" text={library.book_instance_count} />
           <ListItem
