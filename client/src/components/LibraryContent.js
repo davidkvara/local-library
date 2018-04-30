@@ -1,16 +1,20 @@
 import React from "react";
+import ListItem from "./ListItem";
 
 const LibraryContent = ({ data }) => {
   return (
     <div>
-      <h2>The library has the following record counts:</h2>
+      <p className="large">The library has the following record counts:</p>
       {data.map((library, i) => (
         <div key={i}>
-          <p>Books: {library.book_count}</p>
-          <p>Copies: {library.book_instance_count}</p>
-          <p>Copies avialable: {library.book_instance_available_count}</p>
-          <p>Authors: {library.author_count}</p>
-          <p>Genres: {library.genre_count}</p>
+          <ListItem label="Books" text={library.book_count} />
+          <ListItem label="Copies" text={library.book_instance_count} />
+          <ListItem
+            label="Copies avialable"
+            text={library.book_instance_available_count}
+          />
+          <ListItem label="Authors" text={library.author_count} />
+          <ListItem label="Genres" text={library.genre_count} />
         </div>
       ))}
     </div>

@@ -1,4 +1,6 @@
-* {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
@@ -7,10 +9,103 @@ body {
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #272727;
+  line-height: 1.2;
+}
+
+/* helpers */
+
+.success {
+  color: #4caf50;
+}
+
+.alarm {
+  color: goldenrod;
+}
+
+.danger {
+  color: #f44336;
+}
+
+.large {
+  font-size: large;
 }
 
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+/* site */
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav {
+  max-width: 320px;
+  width: 100%;
+  padding-top: 2rem;
+  padding-left: 3rem;
+  border-right: 1px solid #eaeaea;
+  background: #f5f7f9;
+}
+
+.main {
+  padding: 2rem 4rem;
+  flex: 1;
+}
+
+.hello {
+  font-weight: 500;
+  color: brown;
+  margin-top: 0;
+  font-family: serif;
+  padding-bottom: 1rem;
+  border-bottom: 1px dotted #bdbcbc;
+}
+
+.logo {
+  margin: 0;
+  font-size: 28px;
+  font-variant: small-caps;
+  padding: 1rem 1.4rem;
+  color: steelblue;
+  text-align: center;
+  font-weight: 400;
+}
+
+.nav-item {
+  padding: 0.9rem 1.2rem;
+  display: block;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #eaeaea;
+  transition: 0.3s ease-out;
+  user-select: none;
+  border-left: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background: #fbfbfb;
+  border-left: 1px solid #eee;
+}
+
+.page-title {
+  font-variant: small-caps;
+  font-weight: 500;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  letter-spacing: 1px;
+  display: inline-block;
+  border-left: 4px solid #292929;
+  padding: 0.2rem 1.2rem;
+  /* background: linear-gradient(to right, #d5eeff, #fff); */
+  margin-top: 0;
+  margin-bottom: 0.6rem;
 }
