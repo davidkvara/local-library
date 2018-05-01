@@ -18,7 +18,7 @@ class BookInstance extends React.Component {
     return (
       <div>
         <h2 className="page-title">Book Instance List</h2>
-        {this.state.bookinstance_list.map((bookinstance, i) => {
+        {this.state.bookinstance_list.map(bookinstance => {
           const status =
             bookinstance.status === "Available"
               ? "success"
@@ -26,9 +26,9 @@ class BookInstance extends React.Component {
                 ? "alarm"
                 : "danger";
           return (
-            <div className="bookinstance-list" key={i}>
+            <div className="bookinstance-list" key={bookinstance.id}>
               <p>
-                {bookinstance.book.title} -{" "}
+                <a href={bookinstance.url}>{bookinstance.book.title}</a> -{" "}
                 <span className={status}>{bookinstance.status}</span>
               </p>
             </div>

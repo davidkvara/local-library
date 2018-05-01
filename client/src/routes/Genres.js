@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class Genre extends React.Component {
   state = { genre_list: [] };
@@ -18,9 +19,11 @@ class Genre extends React.Component {
     return (
       <div>
         <h2 className="page-title">Genre List</h2>
-        {this.state.genre_list.map((genre, i) => (
-          <div className="genre-list" key={i}>
-            <p>{genre.name}</p>
+        {this.state.genre_list.map(genre => (
+          <div className="genre" key={genre.id}>
+            <p>
+              <Link to={genre.url}>{genre.name}</Link>
+            </p>
           </div>
         ))}
       </div>

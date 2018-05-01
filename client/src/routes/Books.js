@@ -17,16 +17,12 @@ class Books extends React.Component {
   render() {
     return (
       <div>
-        <h2 className="page-title">Books List</h2>
-        {this.state.books_list.map((book, i) => (
-          <div className="book-list" key={i}>
+        <h2 className="page-title">Book List</h2>
+        {this.state.books_list.map(book => (
+          <div className="book-list" key={book.id}>
             <p>
-              <a href={book.url}>
-                {book.title} -{" "}
-                <strong>
-                  {book.author.first_name} {book.author.family_name}
-                </strong>
-              </a>
+              <a href={book.url}>{book.title}</a>-
+              {book.author.name}
             </p>
           </div>
         ))}

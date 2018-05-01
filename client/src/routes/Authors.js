@@ -18,10 +18,15 @@ class Author extends React.Component {
     return (
       <div>
         <h2 className="page-title">Author List</h2>
-        {this.state.author_list.map((author, i) => (
-          <div className="author-list" key={i}>
+        {this.state.author_list.map(author => (
+          <div className="author-list" key={author.id}>
             <p>
-              {author.first_name} {author.family_name}
+              <a href={author.url}>{author.name}</a>{" "}
+              <span className="smaller">
+                ({author.date_of_birth_formatted}-{
+                  author.date_of_death_formatted
+                })
+              </span>
             </p>
           </div>
         ))}
