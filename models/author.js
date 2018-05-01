@@ -34,5 +34,7 @@ AuthorSchema.virtual("date_of_death_formatted").get(function() {
     : "no data";
 });
 
+AuthorSchema.set("toJSON", { virtuals: true });
+
 //Export model
 module.exports = mongoose.model("Author", AuthorSchema);

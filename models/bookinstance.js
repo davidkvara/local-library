@@ -25,5 +25,7 @@ BookInstanceSchema.virtual("due_back_formatted").get(function() {
   return moment(this.due_back).format("MMMM Do, YYYY");
 });
 
+BookInstanceSchema.set("toJSON", { virtuals: true });
+
 //Export model
 module.exports = mongoose.model("BookInstance", BookInstanceSchema);
