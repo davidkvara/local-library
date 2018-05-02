@@ -47,7 +47,7 @@ exports.genre_detail = function(req, res, next) {
       //   genre: results.genre,
       //   genre_books: results.genre_books
       // });
-      res.json([...results.genre_books, results.genre]);
+      res.json([results.genre, ...results.genre_books]);
     }
   );
 };

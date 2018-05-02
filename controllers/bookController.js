@@ -30,7 +30,7 @@ exports.index = function(req, res) {
       //   error: err,
       //   data: results
       // });
-      res.json([results]);
+      res.json(results);
     }
   );
 };
@@ -79,7 +79,7 @@ exports.book_detail = function(req, res, next) {
       //   book: results.book,
       //   book_instances: results.book_instance
       // });
-      res.json([results.book, results.book_instance]);
+      res.json([results.book, ...results.book_instance]);
     }
   );
 };

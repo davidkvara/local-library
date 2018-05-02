@@ -32,10 +32,11 @@ exports.bookinstance_detail = function(req, res, next) {
         return next(err);
       }
       // Successful, so render.
-      res.render("bookinstance_detail", {
-        title: "Book:",
-        bookinstance: bookinstance
-      });
+      // res.render("bookinstance_detail", {
+      //   title: "Book:",
+      //   bookinstance: bookinstance
+      // });
+      res.json([bookinstance]);
     });
 };
 
