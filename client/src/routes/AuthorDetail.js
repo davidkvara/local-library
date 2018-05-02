@@ -17,7 +17,7 @@ class AuthorDetail extends React.Component {
     if (this.state.loading) return <p>Loading ...</p>;
     return (
       <div>
-        <h2>{author.name}</h2>
+        <h2 style={{ marginTop: 0 }}>{author.name}</h2>
         <p className="lighter smaller">
           {author.date_of_birth_formatted} - {author.date_of_death_formatted}
         </p>

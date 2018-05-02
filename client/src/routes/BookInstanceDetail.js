@@ -1,5 +1,5 @@
 import React from "react";
-import Aux from "../components/Aux";
+import Aux from "../components/Fragment";
 import ListItem from "../components/ListItem";
 
 class BookInstanceDetail extends React.Component {

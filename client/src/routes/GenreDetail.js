@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Aux from "../components/Aux";
+import Aux from "../components/Fragment";
 
 class GenreDetail extends React.Component {
   state = { details: [], loading: true };
