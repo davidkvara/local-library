@@ -5,10 +5,6 @@ class Genre extends React.Component {
   state = { genre_list: [] };
 
   componentDidMount() {
-    this.getData();
-  }
-
-  getData() {
     fetch("/catalog/genres")
       .then(res => res.json())
       .then(data => this.setState({ genre_list: data }))
@@ -19,13 +15,15 @@ class Genre extends React.Component {
     return (
       <div>
         <h2 className="page-title">Genre List</h2>
-        {this.state.genre_list.map(genre => (
-          <div className="genre" key={genre.id}>
-            <p>
-              <Link to={genre.url}>{genre.name}</Link>
-            </p>
-          </div>
-        ))}
+        <ul className="genre-list">
+          {this.state.genre_list.map(genre => (
+            <li key={genre.id}>
+              <Link to={genre.url} className="genre">
+                {genre.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
