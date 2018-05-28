@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ListItem from "../components/ListItem";
-import Aux from "../components/Fragment";
 
 class Home extends Component {
   state = { library: {}, loading: true };
@@ -21,7 +20,7 @@ class Home extends Component {
         {this.state.loading ? (
           <p>Loading ...</p>
         ) : (
-          <Aux>
+          <React.Fragment>
             <p className="large lighter">
               The library has the following record counts:
             </p>
@@ -35,7 +34,7 @@ class Home extends Component {
               <ListItem label="Authors" text={library.author_count} />
               <ListItem label="Genres" text={library.genre_count} />
             </div>
-          </Aux>
+          </React.Fragment>
         )}
       </div>
     );

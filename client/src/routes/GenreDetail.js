@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Aux from "../components/Fragment";
 
 class GenreDetail extends React.Component {
   state = { details: [], loading: true };
@@ -20,7 +19,7 @@ class GenreDetail extends React.Component {
         {this.state.loading ? (
           <p>Loading ...</p>
         ) : (
-          <Aux>
+          <React.Fragment>
             <h1 className="genre-title">{genre.name}</h1>
             {books.length > 0 ? (
               books.map(detail => (
@@ -34,7 +33,7 @@ class GenreDetail extends React.Component {
             ) : (
               <p>No books found</p>
             )}
-          </Aux>
+          </React.Fragment>
         )}
       </div>
     );

@@ -1,5 +1,4 @@
 import React from "react";
-import Aux from "../components/Fragment";
 import ListItem from "../components/ListItem";
 
 class BookInstanceDetail extends React.Component {
@@ -17,12 +16,12 @@ class BookInstanceDetail extends React.Component {
     return (
       <div>
         {this.state.details.map(detail => (
-          <Aux key={detail.id}>
+          <React.Fragment key={detail.id}>
             <h2>{detail.book.title}</h2>
             <ListItem label="id" text={detail.id} />
             <ListItem label="imprint" text={detail.imprint} />
             <ListItem label="status" text={detail.status} />
-          </Aux>
+          </React.Fragment>
         ))}
       </div>
     );
