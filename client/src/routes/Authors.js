@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class Author extends React.Component {
   state = { author_list: [] };
@@ -16,7 +17,7 @@ class Author extends React.Component {
         <h2 className="page-title">Author List</h2>
         {this.state.author_list.map(author => (
           <p key={author.id}>
-            <a href={author.url}>{author.name}</a>
+            <Link to={author.url}>{author.name}</Link>
             <span className="smaller">
               ({author.date_of_birth_formatted}-{author.date_of_death_formatted})
             </span>
