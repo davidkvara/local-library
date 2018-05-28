@@ -11,7 +11,8 @@ var app = express();
 
 //Set up mongoose connection
 var mongoose = require("mongoose");
-var mongoDB = "not_to_be_seen";
+var mongoDB =
+  "mongodb://dave_admin:GqCJfwCVpx8xZSFa8@ds149865.mlab.com:49865/local_library_db";
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
@@ -25,10 +26,13 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "build")));
 
-app.use("/", indexRouter);
+// app.use("/", indexRouter);
 app.use("/catalog", catalog);
+app.get("*", (req, res) => {
+  res.sendFile("build/index.html", { root: global });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
