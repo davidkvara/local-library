@@ -3,6 +3,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var compression = require("compression");
 
 var indexRouter = require("./routes/index");
 var catalog = require("./routes/catalog");
@@ -26,6 +27,8 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+// testing compression
+app.use(compression());
 app.use(express.static(path.join(__dirname, "build")));
 
 // app.use("/", indexRouter);
