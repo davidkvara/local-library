@@ -29,9 +29,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // testing compression
 app.use(compression());
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "client/build")));
 
-// app.use("/", indexRouter);
+app.use("/", indexRouter);
 app.use("/catalog", catalog);
 app.get("*", (req, res) => {
   res.sendFile("build/index.html", { root: global });
