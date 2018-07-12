@@ -1,44 +1,33 @@
-import React, { Component } from "react";
+import React, { Fragment } from "react";
 import ListItem from "../components/ListItem";
+import DataProp from "../components/DataProp";
 
-class Home extends Component {
-  state = { library: {}, loading: true };
+const Home = () => (
+  <DataProp query="/catalog">
+    {context => {
+      const { data: library } = context;
 
-  componentDidMount() {
-    fetch("/catalog")
-      .then(res => res.json())
-      .then(library => this.setState({ library, loading: false }))
-      .catch(err => console.log(err));
-  }
-
-  render() {
-    const { library } = this.state;
-
-    return (
-      <div>
-        <h1 className="hello">Welcome to your Local Library</h1>
-        {this.state.loading ? (
-          <p>Loading ...</p>
-        ) : (
-          <React.Fragment>
-            <p className="large lighter">
-              The library has the following record counts:
-            </p>
-            <div style={{ margin: "30px 20px" }}>
-              <ListItem label="Books" text={library.book_count} />
-              <ListItem label="Copies" text={library.book_instance_count} />
-              <ListItem
-                label="Copies avialable"
-                text={library.book_instance_available_count}
-              />
-              <ListItem label="Authors" text={library.author_count} />
-              <ListItem label="Genres" text={library.genre_count} />
-            </div>
-          </React.Fragment>
-        )}
-      </div>
-    );
-  }
-}
+      if (!library) return null;
+      return (
+        <Fragment>
+          <h1 className="hello">Welcome to your Local Library</h1>
+          <p className="large lighter">
+            The library has the following record counts:
+          </p>
+          <div style={{ margin: "30px 20px" }}>
+            <ListItem label="Books" text={library.book_count} />
+            <ListItem label="Copies" text={library.book_instance_count} />
+            <ListItem
+              label="Copies avialable"
+              text={library.book_instance_available_count}
+            />
+            <ListItem label="Authors" text={library.author_count} />
+            <ListItem label="Genres" text={library.genre_count} />
+          </div>
+        </Fragment>
+      );
+    }}
+  </DataProp>
+);
 
 export default Home;
