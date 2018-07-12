@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var compression = require("compression");
 
-var indexRouter = require("./routes/index");
+// var indexRouter = require("./routes/index");
 var catalog = require("./routes/catalog");
 
 var app = express();
@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.use(compression());
 app.use(express.static(path.join(__dirname, "client/build")));
 
-app.use("/", indexRouter);
+// app.use("/", indexRouter);
 app.use("/catalog", catalog);
 app.get("*", (req, res) => {
   res.sendFile("build/index.html", { root: global });

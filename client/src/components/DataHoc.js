@@ -8,22 +8,20 @@ export const withData = (ComposedComponent, url) => {
     };
 
     componentDidMount() {
-      this.setState(
-        { loading: true },
-        fetch(url || this.props.match.url)
-          .then(response => response.json())
-          .then(data =>
-            this.setState({
-              loading: false,
-              data
-            })
-          )
-          .catch(error => {
-            // https://robwise.github.io/blog/cancel-whatwg-fetch-requests-in-react
-            if (error.name === "AbortError") return; // expected, this is the abort, so just return
-            throw error; // must be some other error, handle however you normally would
+      this.setState({ loading: true });
+      fetch(url || this.props.match.url)
+        .then(response => response.json())
+        .then(data =>
+          this.setState({
+            loading: false,
+            data
           })
-      );
+        )
+        .catch(error => {
+          // https://robwise.github.io/blog/cancel-whatwg-fetch-requests-in-react
+          if (error.name === "AbortError") return; // expected, this is the abort, so just return
+          throw error; // must be some other error, handle however you normally would
+        });
     }
 
     componentWillUnmount = () => {
