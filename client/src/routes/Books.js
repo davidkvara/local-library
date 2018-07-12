@@ -1,24 +1,16 @@
-import React from "react";
+import React, { Fragment } from "react";
 import BookList from "../components/BookList";
+import { withData } from "../components/DataHoc";
 
-class Books extends React.Component {
-  state = { books: [] };
+const Books = props => {
+  const { data: books } = props;
 
-  componentDidMount() {
-    fetch("/catalog/books")
-      .then(res => res.json())
-      .then(books => this.setState({ books }))
-      .catch(err => console.log(err));
-  }
+  return (
+    <Fragment>
+      <h2 className="page-title">Book List</h2>
+      <BookList books={books} />
+    </Fragment>
+  );
+};
 
-  render() {
-    return (
-      <div>
-        <h2 className="page-title">Book List</h2>
-        <BookList books={this.state.books} />
-      </div>
-    );
-  }
-}
-
-export default Books;
+export default withData(Books);

@@ -1,43 +1,31 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { withData } from "../components/DataHoc";
 import { Link } from "react-router-dom";
 
-class GenreDetail extends React.Component {
-  state = { details: [], loading: true };
+const GenreDetail = props => {
+  if (!props.data.length) return null;
 
-  componentDidMount() {
-    fetch(this.props.match.url)
-      .then(res => res.json())
-      .then(data => this.setState({ details: data, loading: false }))
-      .catch(err => console.log(err));
-  }
+  const {
+    data: [genre, ...books]
+  } = props;
 
-  render() {
-    const [genre = {}, ...books] = this.state.details;
+  return (
+    <Fragment>
+      <h1 className="genre-title">{genre.name}</h1>
+      {books.length > 0 ? (
+        books.map(detail => (
+          <div key={detail.id} className="book">
+            <h3 className="book-title">
+              <Link to={detail.url}>{detail.title}</Link>
+            </h3>
+            <p>{detail.summary}</p>
+          </div>
+        ))
+      ) : (
+        <p>No books found</p>
+      )}
+    </Fragment>
+  );
+};
 
-    return (
-      <div>
-        {this.state.loading ? (
-          <p>Loading ...</p>
-        ) : (
-          <React.Fragment>
-            <h1 className="genre-title">{genre.name}</h1>
-            {books.length > 0 ? (
-              books.map(detail => (
-                <div key={detail.id} className="book">
-                  <h3 className="book-title">
-                    <Link to={detail.url}>{detail.title}</Link>
-                  </h3>
-                  <p>{detail.summary}</p>
-                </div>
-              ))
-            ) : (
-              <p>No books found</p>
-            )}
-          </React.Fragment>
-        )}
-      </div>
-    );
-  }
-}
-
-export default GenreDetail;
+export default withData(GenreDetail);

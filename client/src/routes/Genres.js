@@ -1,32 +1,24 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { withData } from "../components/DataHoc";
 
-class Genre extends React.Component {
-  state = { genre_list: [] };
+const Genre = props => {
+  const { data: genre_list } = props;
+  if (!genre_list) return null;
+  return (
+    <Fragment>
+      <h2 className="page-title">Genre List</h2>
+      <ul className="genre-list">
+        {genre_list.map(genre => (
+          <li key={genre.id}>
+            <Link to={genre.url} className="genre">
+              {genre.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </Fragment>
+  );
+};
 
-  componentDidMount() {
-    fetch("/catalog/genres")
-      .then(res => res.json())
-      .then(data => this.setState({ genre_list: data }))
-      .catch(err => console.log(err));
-  }
-
-  render() {
-    return (
-      <div>
-        <h2 className="page-title">Genre List</h2>
-        <ul className="genre-list">
-          {this.state.genre_list.map(genre => (
-            <li key={genre.id}>
-              <Link to={genre.url} className="genre">
-                {genre.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-}
-
-export default Genre;
+export default withData(Genre);

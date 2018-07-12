@@ -1,31 +1,22 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ListItem from "../components/ListItem";
+import { withData } from "../components/DataHoc";
 
-class BookInstanceDetail extends React.Component {
-  state = { details: [], loading: true };
+const BookInstanceDetail = props => {
+  const { data: details } = props;
 
-  componentDidMount() {
-    fetch(this.props.match.url)
-      .then(res => res.json())
-      .then(data => this.setState({ details: data, loading: false }))
-      .catch(err => console.log(err));
-  }
+  return (
+    <Fragment>
+      {details.map(detail => (
+        <Fragment key={detail.id}>
+          <h2>{detail.book.title}</h2>
+          <ListItem label="id" text={detail.id} />
+          <ListItem label="imprint" text={detail.imprint} />
+          <ListItem label="status" text={detail.status} />
+        </Fragment>
+      ))}
+    </Fragment>
+  );
+};
 
-  render() {
-    if (this.state.loading) return <p>Loading ...</p>;
-    return (
-      <div>
-        {this.state.details.map(detail => (
-          <React.Fragment key={detail.id}>
-            <h2>{detail.book.title}</h2>
-            <ListItem label="id" text={detail.id} />
-            <ListItem label="imprint" text={detail.imprint} />
-            <ListItem label="status" text={detail.status} />
-          </React.Fragment>
-        ))}
-      </div>
-    );
-  }
-}
-
-export default BookInstanceDetail;
+export default withData(BookInstanceDetail);
